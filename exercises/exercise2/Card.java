@@ -1,25 +1,39 @@
 package exercises.exercise2;
 
+/**
+ * Represents a single playing card, with its rank and suit.
+ *
+ * @author donlopezjr
+ *
+ */
 public class Card implements Comparable<Card> {
 	private CardSuit suit = null;
-	private CardRank value = null;
+	private CardRank rank = null;
 	
+	/**
+	 * Construct an instance of a card from the text-based shorthand.
+	 * 
+	 * @param card Righthand character represents the suit, the rest represents the rank
+	 */
 	public Card(String card) {
 		suit = CardSuit.resolve(card.substring(card.length() - 1));
-		value = CardRank.resolve(card.substring(0, card.length() - 1));
+		rank = CardRank.resolve(card.substring(0, card.length() - 1));
 	}
 
 	public CardSuit getSuit() {
 		return suit;
 	}
 
-	public CardRank getValue() {
-		return value;
+	public CardRank getRank() {
+		return rank;
 	}
 
+	/**
+	 * By default, order cards by their rank.
+	 */
 	@Override
 	public int compareTo(Card o) {
-		return value.compareTo(o.getValue());
+		return rank.compareTo(o.getRank());
 	}
 
 }

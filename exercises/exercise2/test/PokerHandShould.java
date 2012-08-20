@@ -107,5 +107,5 @@ public class PokerHandShould {
 		
 	}
 	
-
+	// TODO test for high-card detection
 }

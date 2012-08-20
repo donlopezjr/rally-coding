@@ -3,6 +3,14 @@ package exercises.exercise1;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+/**
+ * 
+ * Input:  String (parseable by BigDecimal class) of a number in decimal format.
+ * Output: Text-based representation appropriate for printing on a check. 
+ * 
+ * @author donlopezjr
+ *
+ */
 public class CheckAmount {
 	// Numbers that can't be composed algorithmically from other numbers
 	private String[] irregulars = { "", "one", "two", "three", "four",

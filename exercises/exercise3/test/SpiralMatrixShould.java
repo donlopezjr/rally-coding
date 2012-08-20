@@ -21,7 +21,7 @@ public class SpiralMatrixShould {
 	public void RejectNegativeInput() {
 		
 		try {
-			spiralMatrix.setSize(-1);
+			spiralMatrix.setMaximum(-1);
 			fail();
 		}
 		catch (InvalidSizeException ex) {
@@ -35,7 +35,7 @@ public class SpiralMatrixShould {
 	public void CalculateZeroMatrix() throws InvalidSizeException {
 
 
-		spiralMatrix.setSize(0);
+		spiralMatrix.setMaximum(0);
 		
 		assertEquals("0\n", spiralMatrix.toString());
 		
@@ -44,7 +44,7 @@ public class SpiralMatrixShould {
 	@Test
 	public void ExpandRightward() throws InvalidSizeException {
 		
-		spiralMatrix.setSize(1);
+		spiralMatrix.setMaximum(1);
 		
 		assertEquals("0 1\n", spiralMatrix.toString());
 		
@@ -56,7 +56,7 @@ public class SpiralMatrixShould {
 		String result = "0 1\n" + 
 						"  2\n";
 		
-		spiralMatrix.setSize(2);
+		spiralMatrix.setMaximum(2);
 		
 		assertEquals(result, spiralMatrix.toString());
 	}
@@ -67,7 +67,7 @@ public class SpiralMatrixShould {
 		String result = "  0 1\n" + 
 						"4 3 2\n";
 		
-		spiralMatrix.setSize(4);
+		spiralMatrix.setMaximum(4);
 		
 		assertEquals(result, spiralMatrix.toString());		
 	}
@@ -78,7 +78,7 @@ public class SpiralMatrixShould {
 						"5 0 1\n" + 
 						"4 3 2\n";
 
-		spiralMatrix.setSize(6);
+		spiralMatrix.setMaximum(6);
 		
 		assertEquals(result, spiralMatrix.toString());		
 		
@@ -90,7 +90,7 @@ public class SpiralMatrixShould {
 						"5 0 1\n" + 
 						"4 3 2\n";
 
-		spiralMatrix.setSize(8);
+		spiralMatrix.setMaximum(8);
 		
 		assertEquals(result, spiralMatrix.toString());		
 		

@@ -1,8 +1,21 @@
 package exercises.exercise2;
 
+/**
+ * Enumerates all card ranks and defines how the text-based shorthand
+ * maps to actual ranks
+ * 
+ * @author donlopezjr
+ *
+ */
 public enum CardRank {
 	TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE;
 	
+	/**
+	 * Resolve a text-based shorthand for the rank into a typesafe value
+	 * 
+	 * @param value
+	 * @return
+	 */
 	public static CardRank resolve(String value) {
 		switch (value) {
 		case "A":

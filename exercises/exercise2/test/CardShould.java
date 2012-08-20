@@ -14,14 +14,14 @@ public class CardShould {
 	public void LoadCorrectly() {
 		Card card = new Card("Ah");
 		assertEquals(CardSuit.HEARTS, card.getSuit());
-		assertEquals(CardRank.ACE, card.getValue());
+		assertEquals(CardRank.ACE, card.getRank());
 	}
 	
 	@Test
 	public void LoadTwoDigitValueCorrectly() {
 		Card card = new Card("10d");
 		assertEquals(CardSuit.DIAMONDS, card.getSuit());
-		assertEquals(CardRank.TEN, card.getValue());
+		assertEquals(CardRank.TEN, card.getRank());
 		
 	}
 	

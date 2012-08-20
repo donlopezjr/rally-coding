@@ -33,7 +33,7 @@ public class TripleDigitSpiralMatrixShould {
 						"     64  63  62  61  60  59  58  57  56  89\n" +
 						"100  99  98  97  96  95  94  93  92  91  90\n";
 		
-		spiralMatrix.setSize(100);
+		spiralMatrix.setMaximum(100);
 		
 		assertEquals(result, spiralMatrix.toString());
 		
@@ -54,7 +54,7 @@ public class TripleDigitSpiralMatrixShould {
 						"101  64  63  62  61  60  59  58  57  56  89\n" +
 						"100  99  98  97  96  95  94  93  92  91  90\n";
 		
-		spiralMatrix.setSize(110);
+		spiralMatrix.setMaximum(110);
 		
 		assertEquals(result, spiralMatrix.toString());
 		
@@ -75,7 +75,7 @@ public class TripleDigitSpiralMatrixShould {
 						"101  64  63  62  61  60  59  58  57  56  89\n" +
 						"100  99  98  97  96  95  94  93  92  91  90\n";
 		
-		spiralMatrix.setSize(120);
+		spiralMatrix.setMaximum(120);
 		
 		assertEquals(result, spiralMatrix.toString());
 		
@@ -96,7 +96,7 @@ public class TripleDigitSpiralMatrixShould {
 						"101  64  63  62  61  60  59  58  57  56  89    \n" +
 						"100  99  98  97  96  95  94  93  92  91  90    \n";
 		
-		spiralMatrix.setSize(121);
+		spiralMatrix.setMaximum(121);
 		
 		assertEquals(result, spiralMatrix.toString());
 		

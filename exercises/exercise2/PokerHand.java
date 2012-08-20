@@ -8,6 +8,13 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.StringTokenizer;
 
+/**
+ * Represents a 5-card poker hand.  Parses the text-based hand and 
+ * determines rank for the hand.
+ * 
+ * @author donlopezjr
+ *
+ */
 public class PokerHand {
 
 	private Card[] cards = new Card[5];
@@ -19,7 +26,8 @@ public class PokerHand {
 	 */
 	public void loadHand(String hand) {
 		int k = 0;
-
+		// TODO check for too many/too little cards
+		
 		StringTokenizer st = new StringTokenizer(hand);
 		while (st.hasMoreTokens()) {
 			cards[k] = new Card(st.nextToken());
@@ -104,31 +112,34 @@ public class PokerHand {
 	}
 
 	/**
+	 * Looks for a 5-card series of sequential rank.  Works for Aces high
+	 * or Aces low. 
+	 * 
 	 * Assumes that the cards have been sorted
 	 * 
 	 * @return true if the hand has a straight
 	 */
 	private boolean hasStraight() {
-		if (cards[4].getValue() == CardRank.ACE
-				&& cards[0].getValue() == CardRank.TWO) {
+		if (cards[4].getRank() == CardRank.ACE
+				&& cards[0].getRank() == CardRank.TWO) {
 			
 			// Possible ace-low straight
 			
 			if (
-					cards[1].getValue() == CardRank.THREE && 
-					cards[2].getValue() == CardRank.FOUR &&
-					cards[3].getValue() == CardRank.FIVE) {
+					cards[1].getRank() == CardRank.THREE && 
+					cards[2].getRank() == CardRank.FOUR &&
+					cards[3].getRank() == CardRank.FIVE) {
 				
 				return true;
 				
 			}
 		} else {
-			if (cards[0].getValue().ordinal() == cards[1].getValue().ordinal() - 1
-					&& cards[1].getValue().ordinal() == cards[2].getValue()
+			if (cards[0].getRank().ordinal() == cards[1].getRank().ordinal() - 1
+					&& cards[1].getRank().ordinal() == cards[2].getRank()
 							.ordinal() - 1
-					&& cards[2].getValue().ordinal() == cards[3].getValue()
+					&& cards[2].getRank().ordinal() == cards[3].getRank()
 							.ordinal() - 1
-					&& cards[3].getValue().ordinal() == cards[4].getValue()
+					&& cards[3].getRank().ordinal() == cards[4].getRank()
 							.ordinal() - 1
 
 			) {
@@ -141,7 +152,8 @@ public class PokerHand {
 	}
 
 	/**
-	 * Determines the frequency of each card rank
+	 * Determines the frequency of each card rank to determine presence of pairs,
+	 * three/four of a kind.
 	 * 
 	 * @return Map of card rank to frequency of the card rank in the current hand
 	 */
@@ -153,7 +165,7 @@ public class PokerHand {
 		Integer thisCount;
 
 		for (int i = 0; i < cards.length; i++) {
-			thisValue = cards[i].getValue();
+			thisValue = cards[i].getRank();
 			thisCount = instances.get(thisValue);
 
 			if (thisCount == null)

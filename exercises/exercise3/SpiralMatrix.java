@@ -1,36 +1,55 @@
 package exercises.exercise3;
 
-
+/**
+ * Creates a matrix in a spiral format up to a given maximum integer and 
+ * outputs it as a string.
+ * 
+ * @author donlopezjr
+ *
+ */
 public class SpiralMatrix {
-	private int size;
+	// The array that holds the spiral matrix
+	private int[][] matrix;
+	// The height/width of the above array
 	int matrixSize;
-	private int[][] matrix = null;
+	// The number of characters required to represent the largest number in the matrix
 	private int fieldSize;
+	// The last number in the spiral pattern
+	private int maximum;
 	
 	public SpiralMatrix() {
 		try {
-			setSize(0);
+			setMaximum(0);
 		}
 		catch (InvalidSizeException ex) {
-			
+			// A value of 0 should never trigger an exception
 		}
 	}
 	
-	public void setSize(int size) throws InvalidSizeException {
-		if (size < 0)
+	/**
+	 * Set the last number in the spiral pattern
+	 * 
+	 * @param maximum The last number in the spiral pattern
+	 * @throws InvalidSizeException Only sizes >= 0 are allowed
+	 */
+	public void setMaximum(int maximum) throws InvalidSizeException {
+		if (maximum < 0)
 			throw new InvalidSizeException();
 		
-		this.size = size;
+		this.maximum = maximum;
 		
 		// Calculate how large the field needs to be to accomodate the largest number
-		if (size > 0)
-			fieldSize = (int) Math.floor(Math.log10(size)) + 1;
+		if (maximum > 0)
+			fieldSize = (int) Math.floor(Math.log10(maximum)) + 1;
 		else
 			fieldSize = 1;
 		
 		matrix = null;
 	}
 
+	/**
+	 * Construct the underlying matrix of integers used to print out the pattern.
+	 */
 	private void createMatrix() {
 		// Current coordinates
 		int x, y;
@@ -65,7 +84,7 @@ public class SpiralMatrix {
 		subMatrixRight = x;
 		subMatrixBottom = y;
 		
-		while (k <= size) {
+		while (k <= maximum) {
 			// Plot this number
 			matrix[x][y] = k;
 			
@@ -114,7 +133,7 @@ public class SpiralMatrix {
 	}
 
 	/**
-	 * Calculates the size of the matrix required based on the max value
+	 * Calculates the size of the underlying matrix required based on the max value
 	 * 
 	 * @return The height/width of the required matrix.
 	 */
@@ -124,7 +143,7 @@ public class SpiralMatrix {
 		// A 0 matrix is 1x1.
 		// Anytime a perfect square of an odd number is reached, we have exceeded the available slots,
 		// expand by 2 in each direction
-		matrixWidth = Math.sqrt(size + 1);
+		matrixWidth = Math.sqrt(maximum + 1);
 		matrixWidth = Math.ceil(matrixWidth);
 		if (matrixWidth % 2 == 0)
 			matrixWidth++;
@@ -164,10 +183,10 @@ public class SpiralMatrix {
 		// Print out each row of values, ignoring blank border row/columns.
 		for (int j = top; j < bottom; j++) {
 			
-			result.append(getValue(left, j));
+			result.append(getValueAsString(left, j));
 			
 			for (int i = left+1; i < matrixSize; i++) {
-				result.append(" "+getValue(i,j));
+				result.append(" "+getValueAsString(i,j));
 			}
 			result.append("\n");
 		}
@@ -182,7 +201,7 @@ public class SpiralMatrix {
 	 * @param y Y Coordinate
 	 * @return A uniformly padded string representation of the requested cell
 	 */
-	private String getValue(int x, int y) { 
+	private String getValueAsString(int x, int y) { 
 		// Pad to the field size that we calculated earlier, -1 indicates a blank cell
 		if (matrix[x][y] == -1)
 			return String.format("%" + fieldSize + "s", "");

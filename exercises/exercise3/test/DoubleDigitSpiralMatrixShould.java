@@ -26,7 +26,7 @@ public class DoubleDigitSpiralMatrixShould {
 						" 4  3  2 11\n" + 
 						"         12\n";
 
-		spiralMatrix.setSize(12);
+		spiralMatrix.setMaximum(12);
 		
 		assertEquals(result, spiralMatrix.toString());
 	}
@@ -39,7 +39,7 @@ public class DoubleDigitSpiralMatrixShould {
 						"    4  3  2 11\n" + 
 						"16 15 14 13 12\n";
 		
-		spiralMatrix.setSize(16);
+		spiralMatrix.setMaximum(16);
 		
 		assertEquals(result, spiralMatrix.toString());		
 	}
@@ -52,7 +52,7 @@ public class DoubleDigitSpiralMatrixShould {
 						"17  4  3  2 11\n" + 
 						"16 15 14 13 12\n";
 
-		spiralMatrix.setSize(20);
+		spiralMatrix.setMaximum(20);
 
 		assertEquals(result, spiralMatrix.toString());		
 		
@@ -66,7 +66,7 @@ public class DoubleDigitSpiralMatrixShould {
 						"17  4  3  2 11\n" + 
 						"16 15 14 13 12\n";
 
-		spiralMatrix.setSize(24);
+		spiralMatrix.setMaximum(24);
 
 		assertEquals(result, spiralMatrix.toString());		
 		
@@ -81,7 +81,7 @@ public class DoubleDigitSpiralMatrixShould {
 						"17  4  3  2 11   \n" + 
 						"16 15 14 13 12   \n";
 
-		spiralMatrix.setSize(25);
+		spiralMatrix.setMaximum(25);
 		
 		assertEquals(result, spiralMatrix.toString());
 		
