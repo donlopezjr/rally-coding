@@ -24,14 +24,25 @@ public class PokerHand {
 	 * 
 	 * @param hand String representation of hand
 	 */
-	public void loadHand(String hand) {
+	public void loadHand(String hand) throws InvalidHandException, InvalidCardException {
 		int k = 0;
-		// TODO check for too many/too little cards
 		
 		StringTokenizer st = new StringTokenizer(hand);
 		while (st.hasMoreTokens()) {
-			cards[k] = new Card(st.nextToken());
+			try {
+				cards[k] = new Card(st.nextToken());
+			}
+			catch (ArrayIndexOutOfBoundsException ex) {
+				// There were more than five cards passed
+				throw new InvalidHandException();
+			}
+			
 			k++;
+		}
+		
+		// Less than five cards were given
+		if (k < 5) {
+			throw new InvalidHandException();
 		}
 
 		Arrays.sort(cards);

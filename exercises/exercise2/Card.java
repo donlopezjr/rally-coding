@@ -15,9 +15,12 @@ public class Card implements Comparable<Card> {
 	 * 
 	 * @param card Righthand character represents the suit, the rest represents the rank
 	 */
-	public Card(String card) {
+	public Card(String card) throws InvalidCardException {
 		suit = CardSuit.resolve(card.substring(card.length() - 1));
 		rank = CardRank.resolve(card.substring(0, card.length() - 1));
+		
+		if (suit == null || rank == null)
+			throw new InvalidCardException(card);
 	}
 
 	public CardSuit getSuit() {
